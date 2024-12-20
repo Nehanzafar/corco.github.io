@@ -7,10 +7,10 @@ const Home = () => {
     <div>
       <div
         role="Hero section"
-        className="bg-heroImg bg-cover h-[100vh] lg:block flex flex-col items-center justify-start"
+        className="bg-heroImg bg-cover md:h-[100vh] h-[60vh] lg:block flex flex-col items-center justify-start"
       >
         <div className="flex flex-col lg:items-start items-center justify-center lg:w-1/2 w-auto h-full lg:ml-16">
-          <h1 className="font-dancingScript lg:text-mainHeading md:text-[64px] text-[48px] text-backgroundColors-1 my-1">
+          <h1 className="font-dancingScript lg:text-mainHeading md:text-[6rem] text-[3rem] text-backgroundColors-1 my-1">
             Search Recipes
           </h1>
           <SearchBar className={"shadow-standard my-1"} />
@@ -27,7 +27,7 @@ const Home = () => {
                 "bg-secondary-1 text-backgroundColors-2 hover:bg-secondary-2 hover:text-textColors-1"
               }
               className={
-                "text-backgroundColors-2 py-3 md:px-10 px-6 lg:text-button text-[1rem]"
+                "text-backgroundColors-2 md:py-3 md:my-2 py-2 md:px-8 px-4 mx-4 md:text-button md:rounded-2xl text-[1rem]"
               }
             >
               Explore
@@ -38,14 +38,13 @@ const Home = () => {
                 "bg-secondary-1 text-backgroundColors-2 hover:bg-secondary-2 lg:ml-6 hover:text-textColors-1"
               }
               className={
-                "text-backgroundColors-2 py-3 md:px-10 px-6 lg:text-button text-[1rem]"
+                "text-backgroundColors-2 md:py-3 md:my-2 py-2 md:px-8 px-4 mx-4 md:text-button md:rounded-2xl text-[1rem]"
               }
             >
               Random
             </Button>
           </div>
         </div>
-        <h1 className="self-center">Trending</h1>
       </div>
     </div>
   );

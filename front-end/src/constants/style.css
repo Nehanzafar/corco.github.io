@@ -1,0 +1,36 @@
+*{
+    font-family: sans-serif;
+
+}
+body{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+}
+title{
+    font-size: 26px;
+    align-self: center;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: cadetblue;   
+}
+
+List {
+    list-style: circle;
+}
+
+recipe {
+    display: block;
+    background-color:  cadetblue;
+    padding: 10px;
+    margin: 10px;
+}
+
+ingredient {
+    display: block
+}
+
+step{
+    display:block
+}
