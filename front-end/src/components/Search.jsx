@@ -1,10 +1,9 @@
 import { Form } from "react-router-dom";
-import searchIcon from "../assets/imgs/SVGs/Search button.svg";
 import { FiSearch } from "react-icons/fi";
 import { FaArrowRight } from "react-icons/fa";
-import Button from "./Button";
 
-const SearchBar = ({className}) => {
+// eslint-disable-next-line react/prop-types
+const SearchBar = ({ className }) => {
   return (
     <Form
       action="search"
@@ -22,7 +21,7 @@ const SearchBar = ({className}) => {
         onClick={() => alert("hello")}
         className="m-3 md:m-2 md:w-8 md:h-8 w-7 h-7 hover:bg-secondary-2 bg-secondary-1 rounded-full"
       >
-        <FaArrowRight className="text-textColors-1 m-auto"/>
+        <FaArrowRight className="text-textColors-1 m-auto" />
       </button>
     </Form>
   );

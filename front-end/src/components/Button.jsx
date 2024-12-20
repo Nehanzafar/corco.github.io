@@ -6,9 +6,7 @@ const Button = ({ className, children, path, color, onclick }) => {
     <button
       className={`${className || ""} 
         button
-        ${
-        color ? color : "bg-secondary-1 hover:bg-secondary-2"
-      }  
+        ${color ? color : "bg-secondary-1 hover:bg-secondary-2"}  
        ${
          color
            ? "text-backgroundColors-1 hover:text-backgroundColors-1"

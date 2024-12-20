@@ -63,13 +63,18 @@ const Header = () => {
           </ul>
           <HamburgerMenu />
         </nav>
-        <Button onclick={toggleNavigation} className={"lg:hidden md:py-2 md:px-3 px-3 py-2"}>
+        <Button
+          onclick={toggleNavigation}
+          className={"lg:hidden md:py-2 md:px-3 px-3 py-2"}
+        >
           <Menu openNavigation={openNavigation} />
         </Button>
         <Button
           path={"/signup"}
           color={"bg-secondary-2"}
-          className={"hover:bg-secondary-1 px-3 py-3 text-center hidden items-center lg:flex m-0 hover:text-textColors-1"}
+          className={
+            "hover:bg-secondary-1 px-3 py-3 text-center hidden items-center lg:flex m-0 hover:text-textColors-1"
+          }
         >
           Sign Up
         </Button>
