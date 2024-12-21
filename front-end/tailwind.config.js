@@ -16,7 +16,7 @@ export default {
         2: "#4B5548",
       },
       highlight: {
-        1: "F2C94C",
+        1: "#F2C94C",
       },
       backgroundColors: {
         1: "#ffffff",
