@@ -1,8 +1,8 @@
 import { Form } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { FaArrowRight } from "react-icons/fa";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
 const SearchBar = ({ className }) => {
   return (
     <Form
@@ -27,4 +27,8 @@ const SearchBar = ({ className }) => {
   );
 };
 
+
+SearchBar.propTypes = {
+  className: PropTypes.string,
+};
 export default SearchBar;

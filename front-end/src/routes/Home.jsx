@@ -1,11 +1,14 @@
+import { useState, useEffect } from "react";
 import SearchBar from "../components/search";
 import { HeroParagraph, mobileHeroParagraph } from "../constants";
 import Button from "../components/Button";
 import RecipeDisplay from "../components/RecipeDisplay";
 import testData from "../constants/testData";
+import { fetchRecipeById } from "../api/recipes.js";
 
 const ResultArray = () => {
   const data = testData.results;
+
   return (
     <div className="flex flex-wrap md:flex-row flex-col md:justify-around items-center md:mx-3 mx-1 mb-3 -mt-2">
       {data.map((v) => (
@@ -14,9 +17,7 @@ const ResultArray = () => {
           url={v.image}
           title={v.title}
           onErrorImage={(e) =>
-            console.log(
-              (e.target.parentElement.parentElement.style.display = "none")
-            )
+            (e.target.parentElement.parentElement.style.display = "none")
           }
         />
       ))}
@@ -24,10 +25,13 @@ const ResultArray = () => {
   );
 };
 
+// For later use
 // e.target.src =
 //     "https://placehold.co/270x200/FCFCFC/BCBCBC/png?text=Image+Not+Found&font=poppins"
 
 const Home = () => {
+
+
   return (
     <>
       <div
@@ -47,23 +51,23 @@ const Home = () => {
           </p>
           <div className="lg:block flex justify-around lg:w-auto w-full lg:px-0 md:px-12 px-8">
             <Button
-              onclick={() => alert("Hello 1")}
+              onClick={() => alert("Hello 1")}
               color={
                 "bg-secondary-1 text-backgroundColors-2 hover:bg-secondary-2 hover:text-textColors-1"
               }
               className={
-                "text-backgroundColors-2 md:py-3 md:my-2 py-2 md:px-8 px-4 mx-4 md:text-button md:rounded-2xl text-[1rem] hover:shadow-xl"
+                "text-backgroundColors-2 md:py-3 md:my-2 py-2 md:px-8 px-4 mx-4 md:text-button md:rounded-2xl text-[1rem] hover:shadow-xl animation-home-page"
               }
             >
               Explore
             </Button>
             <Button
-              onclick={() => alert("Hello 2")}
+              onClick={() => alert("Hello 2")}
               color={
                 "bg-secondary-1 text-backgroundColors-2 hover:bg-secondary-2 lg:ml-6 hover:text-textColors-1"
               }
               className={
-                "text-backgroundColors-2 md:py-3 md:my-2 py-2 md:px-8 px-4 mx-4 md:text-button md:rounded-2xl text-[1rem] hover:shadow-xl"
+                "text-backgroundColors-2 md:py-3 md:my-2 py-2 md:px-8 px-4 mx-4 md:text-button md:rounded-2xl text-[1rem] hover:shadow-xl animation-home-page"
               }
             >
               Random

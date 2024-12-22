@@ -5,6 +5,7 @@ import ErrorPage from "./errorElement";
 import Home from "./routes/Home";
 import "./index.css";
 import Root from "./routes/Root";
+import ConstructionPage from "./routes/ConstructionPage";
 
 const router = createBrowserRouter([
   {
@@ -18,33 +19,30 @@ const router = createBrowserRouter([
       },
       {
         path: "/meal-plans",
-        element: <div className="">Main course</div>,
+        element: <ConstructionPage url={"Meal plans"}/>,
       },
       {
         path: "/explore",
-        element: <div className="">Explore</div>
+        element: <ConstructionPage url={"Explore"}/>
       },
       {
         path: "/contact",
-        element: <div className="">contact</div>
+        element: <ConstructionPage url={"Contact"}/>
       },
       {
         path: "/about",
-        element: <div className="">about</div>
+        element: <ConstructionPage url={"About"}/>
       }
     ],
   },
   {
-    path: "/signin",
-    element: <div>Sign in page under progress</div>
+    path: "/signup",
+    element: <ConstructionPage url="Signup" />
   },
   {
     path: "/search",
-    element: <div>Search page under progress</div>
+    element: <ConstructionPage url="Search" />
   },
-  
-  
-
 ]);
 
 createRoot(document.getElementById("root")).render(

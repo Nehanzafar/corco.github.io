@@ -26,7 +26,7 @@ const Header = () => {
     }
   };
   return (
-    <div className="top-0 w-full z-50 bg-primary-1 px-3 py-3">
+    <div className="top-0 w-full z-50 bg-primary-1 px-3 py-3 shadow-xl">
       <div className="flex justify-between">
         <Link to={"/"} className="flex flex-row items-center">
           <img
@@ -53,7 +53,7 @@ const Header = () => {
                   path={v.path}
                   onclick={handleClick}
                   className={
-                    "lg:my-0 my-3 mx-1 relative lg:py-1 lg:px-2 lg:inline block px-3 py-3 lg:text-[1rem] text-[1.35rem]"
+                    "lg:my-0 my-3 mx-1 relative lg:py-1 lg:px-2 lg:inline block px-3 py-3 lg:text-[1rem] text-[1.35rem] animation-home-page"
                   }
                 >
                   {v.title}
@@ -73,7 +73,7 @@ const Header = () => {
           path={"/signup"}
           color={"bg-secondary-2"}
           className={
-            "hover:bg-secondary-1 px-3 py-3 text-center hidden items-center lg:flex m-0 hover:text-textColors-1"
+            "hover:bg-secondary-1 px-3 py-3 text-center hidden items-center lg:flex m-0 hover:text-textColors-1 animation-home-page"
           }
         >
           Sign Up

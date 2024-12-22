@@ -1,10 +1,7 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { FaHeart } from "react-icons/fa6";
-import { FaRegHeart } from "react-icons/fa";
-import { FaThumbsUp } from "react-icons/fa";
-import { FaRegThumbsUp } from "react-icons/fa";
-import { FaRegThumbsDown } from "react-icons/fa";
-import { FaThumbsDown } from "react-icons/fa";
+import { FaRegHeart, FaThumbsUp, FaRegThumbsUp, FaRegThumbsDown, FaThumbsDown } from "react-icons/fa";
 
 // To display the favourite icon
 const favourite = (isFavourite) => {
@@ -19,35 +16,46 @@ const favourite = (isFavourite) => {
 const likeDislike = (isLiked, setIsLiked, isDisliked, setIsDisliked) => {
   return (
     <div className="flex flex-row">
-
-    <div
-
-className={`rounded-full p-2 bg-textColors-1 mx-1 mb-1 shadow-standard hover:text-[#F39C12]`}
-onClick={() => setIsLiked(!isLiked)}
->
-      {isLiked ? (
-
-          <FaThumbsUp className="text-[0.9rem] text-highlight-1 hover:text-[#F39C12] animation-home-page" />
-      ) : (
-        <FaRegThumbsUp className="text-[0.9rem] text-highlight-1 hover:text-[#F39C12] animation-home-page"/>
-      )}
-    </div>
-        <div
-        className={`rounded-full p-2 bg-textColors-1 mx-1 mb-1 shadow-standard `}
-        onClick={() => setIsDisliked(!isDisliked)}
+      <div
+        className={`rounded-full p-2 bg-textColors-1 mx-1 mb-1 shadow-standard hover:text-[#F39C12]`}
+        onClick={() => {
+          if (isLiked) {
+            setIsLiked(false);
+          } else {
+            setIsLiked(true);
+            setIsDisliked(false);
+          }
+        }}
       >
-        {isDisliked ? (
-          <FaThumbsDown className="text-[0.9rem] text-highlight-1 hover:text-[#F39C12] animation-home-page"/>
+        {isLiked ? (
+          <FaThumbsUp className="text-[0.9rem] text-highlight-1 hover:text-[#F39C12] animation-home-page" />
         ) : (
-            <FaRegThumbsDown className="text-[0.9rem] text-highlight-1 hover:text-[#F39C12] animation-home-page" />
+          <FaRegThumbsUp className="text-[0.9rem] text-highlight-1 hover:text-[#F39C12] animation-home-page" />
         )}
       </div>
-        </div>
+      <div
+        className={`rounded-full p-2 bg-textColors-1 mx-1 mb-1 shadow-standard`}
+        onClick={() => {
+          if (isDisliked) {
+            setIsDisliked(false);
+          } else {
+            setIsDisliked(true);
+            setIsLiked(false);
+          }
+        }}
+      >
+        {isDisliked ? (
+          <FaThumbsDown className="text-[0.9rem] text-highlight-1 hover:text-[#F39C12] animation-home-page" />
+        ) : (
+          <FaRegThumbsDown className="text-[0.9rem] text-highlight-1 hover:text-[#F39C12] animation-home-page" />
+        )}
+      </div>
+    </div>
   );
 };
 
 // To check if the image is broken and apply the right styling
-const Img = (url, title, isFavourite, setIsFavourite, onError) => {
+const RecipeImage = (url, title, isFavourite, setIsFavourite, onError) => {
   return (
     <div
       className="relative rounded-xl shadow-standard group-hover:shadow-none"
@@ -75,13 +83,19 @@ const RecipeDisplay = ({ url, title, onErrorImage }) => {
 
   return (
     <div className="rounded-xl w-[270px] h-[318px] bg-backgroundColors-1/80 md:my-4 my-1 md:mx-2 mx-1 group group hover:shadow-lg flex flex-col justify-end animation-home-page">
-      {Img(url, title, isFavourite, setIsFavourite, onErrorImage)}
+      {RecipeImage(url, title, isFavourite, setIsFavourite, onErrorImage)}
       <h1 className="font-poppins font-bold text-textColors-1 text-[20px] mt-2 overflow-clip overflow-ellipsis whitespace-nowrap w-[270px] h-[50px]">
         {title}
       </h1>
-        {likeDislike(isLiked, setIsLiked, isDisliked, setIsDisliked)}
+      {likeDislike(isLiked, setIsLiked, isDisliked, setIsDisliked)}
     </div>
   );
+};
+
+RecipeDisplay.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  onErrorImage: PropTypes.func.isRequired,
 };
 
 export default RecipeDisplay;

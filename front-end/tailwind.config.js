@@ -34,18 +34,18 @@ export default {
       },
       backgroundImage:{
         'heroImg': "url('/src/assets/imgs/Hero img.png')"
-      }
-    },
-    fontSize: {
-      mainHeading: "72px",
-      heading: "64px",
-      paragraph: "20px",
-      button: "20px",
-      nav: "26px",
-      mobileMainHeading: "62px",
-      mobileHeading: "26px",
-      mobileParagraph: "16px",
+      },
+      fontSize: {
+        mainHeading: "72px",
+        heading: "64px",
+        paragraph: "20px",
+        button: "20px",
+        nav: "26px",
+        mobileMainHeading: "62px",
+        mobileHeading: "26px",
+        mobileParagraph: "16px",
+      },
     },
   },
-  plugins: [],
+    plugins: [],
 };

@@ -4,7 +4,7 @@
 
 @layer base {
   *:focus {
-    @apply outline outline-2 outline-offset-1 outline-primary-2 border-none rounded-lg;
+    @apply outline outline-2 outline-offset-2 outline-primary-2 border-none rounded-lg;
   }
 }
 
