@@ -46,4 +46,8 @@
   .animation-home-page {
     @apply transition-all duration-300 ease-in-out;
   }
+
+  .loader {
+    @apply border border-primary-1 border-t-8 border-t-primary-2 rounded-full w-28 h-28 animate-spin m-12;
+  }
 }

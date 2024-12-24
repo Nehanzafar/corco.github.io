@@ -1,6 +1,4 @@
-var testData = {};
-
-export default testData = {
+{
   "results": [
     {
       "id": 642583,

@@ -3,19 +3,56 @@ import SearchBar from "../components/search";
 import { HeroParagraph, mobileHeroParagraph } from "../constants";
 import Button from "../components/Button";
 import RecipeDisplay from "../components/RecipeDisplay";
-import testData from "../constants/testData";
-import { fetchRecipeById } from "../api/recipes.js";
+import { searchRecipes } from "../api/recipes.js";
+import { useLoaderData } from "react-router-dom";
+import PropTypes from "prop-types";
+import testData from "../constants/testData.json";
 
-const ResultArray = () => {
-  const data = testData.results;
+
+
+export async function loader() {
+  var rand = Math.floor(Math.random() * 19);
+  const recipesArray = [
+    "Spaghetti Carbonara",
+    "Chicken Tikka Masala",
+      "Beef Stroganoff",
+      "Vegetable Stir-Fry",
+      "Margherita Pizza",
+      "Caesar Salad",
+      "Fish Tacos",
+      "Shrimp Scampi",
+      "Ramen Noodles",
+      "Lentil Soup",
+      "Eggplant Parmesan",
+      "Classic Cheeseburger",
+      "Chicken Alfredo Pasta",
+      "Tomato Basil Soup",
+      "Vegetarian Chili",
+      "Sushi Rolls",
+      "Greek Salad",
+      "Chocolate Chip Cookies",
+    
+    ];
+  const recipes = await searchRecipes(recipesArray[rand], 15);
+
+  return [recipes];
+}
+
+const Loader = () => (
+  <div className="flex justify-center items-center h-full">
+    <div className="loader"></div>
+  </div>
+);
+
+const ResultArray = ({ data }) => {
+  const recipes = data || [];
 
   return (
     <div className="flex flex-wrap md:flex-row flex-col md:justify-around items-center md:mx-3 mx-1 mb-3 -mt-2">
-      {data.map((v) => (
+      {recipes.map((recipe) => (
         <RecipeDisplay
-          key={v.id}
-          url={v.image}
-          title={v.title}
+        key={recipe?.id}
+          recipe={recipe}
           onErrorImage={(e) =>
             (e.target.parentElement.parentElement.style.display = "none")
           }
@@ -27,10 +64,10 @@ const ResultArray = () => {
 
 // For later use
 // e.target.src =
-//     "https://placehold.co/270x200/FCFCFC/BCBCBC/png?text=Image+Not+Found&font=poppins"
+    // "https://placehold.co/270x200/FCFCFC/BCBCBC/png?text=Image+Not+Found&font=poppins"
 
 const Home = () => {
-
+  const recipes = useLoaderData() || [];
 
   return (
     <>
@@ -80,11 +117,19 @@ const Home = () => {
           <h1 className="font-dancingScript lg:text-mainHeading md:text-[6rem] text-[3rem] text-center mt-6 text-textColors-2">
             Popular Recipes
           </h1>
-          <ResultArray />
+              {recipes.length ?
+              <ResultArray data={recipes} /> : <ResultArray data={testData.results} />
+              }
         </div>
       </div>
     </>
   );
+};
+
+
+ResultArray.propTypes = { 
+  data: PropTypes.array,
+
 };
 
 export default Home;

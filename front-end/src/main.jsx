@@ -4,8 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./errorElement";
 import Home from "./routes/Home";
 import "./index.css";
+import {loader as homeLoader} from "./routes/Home";
+import {loader as recipeLoader} from "./routes/RecipeCard";
 import Root from "./routes/Root";
 import ConstructionPage from "./routes/ConstructionPage";
+import RecipeCard from "./routes/RecipeCard";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +19,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home/>,
+        loader: homeLoader,
       },
       {
         path: "/meal-plans",
@@ -32,16 +36,21 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <ConstructionPage url={"About"}/>
-      }
+      },
+      {
+        path: "/search",
+        element: <ConstructionPage url={"Search"} />
+      },
+      {
+        path: "/RecipeCard/:recipeId",
+        element: <RecipeCard />,
+        loader: recipeLoader,
+      },
     ],
   },
   {
     path: "/signup",
     element: <ConstructionPage url="Signup" />
-  },
-  {
-    path: "/search",
-    element: <ConstructionPage url="Search" />
   },
 ]);
 
