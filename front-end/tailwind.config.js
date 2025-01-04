@@ -2,30 +2,31 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    colors: {
-      primary: {
-        1: "#F7EFE5",
-        2: "#A6B491",
-      },
-      secondary: {
-        1: "#D97941",
-        2: "#B26136",
-      },
-      textColors: {
-        1: "#333333",
-        2: "#4B5548",
-      },
-      highlight: {
-        1: "#F2C94C",
-      },
-      backgroundColors: {
-        1: "#ffffff",
-        2: "#E8E8E8",
-      },
-    },
-
-
+    
     extend: {
+      colors: {
+        primary: {
+          1: "#F7EFE5",
+          2: "#A6B491",
+        },
+        secondary: {
+          1: "#D97941",
+          2: "#B26136",
+        },
+        textColors: {
+          1: "#333333",
+          2: "#4B5548",
+        },
+        highlight: {
+          1: "#F2C94C",
+        },
+        backgroundColors: {
+          1: "#ffffff",
+          2: "#E8E8E8",
+        },
+      },
+  
+  
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
         dancingScript: ["Dancing-script", "script"],

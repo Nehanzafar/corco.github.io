@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { disablePageScroll, enablePageScroll } from "scroll-lock";
+import GotoTheTop from "../api/toTheTop";
 import logo from "../assets/imgs/SVGs/Logo.svg";
+import Menu from "../assets/imgs/SVGs/menu";
 import { nav } from "../constants/index";
 import Button from "./Button";
-import Menu from "../assets/imgs/SVGs/menu";
-import { useState } from "react";
 import HamburgerMenu from "./HamburgerMenu";
-import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
 const Header = () => {
   const [openNavigation, setOpenNavigation] = useState(false);
@@ -51,7 +52,7 @@ const Header = () => {
               <li key={v.id} className="">
                 <Button
                   path={v.path}
-                  onclick={handleClick}
+                  onClick={handleClick}
                   className={
                     "lg:my-0 my-3 mx-1 relative lg:py-1 lg:px-2 lg:inline block px-3 py-3 lg:text-[1rem] text-[1.35rem] animation-home-page"
                   }
@@ -64,7 +65,7 @@ const Header = () => {
           <HamburgerMenu />
         </nav>
         <Button
-          onclick={toggleNavigation}
+          onClick={toggleNavigation}
           className={"lg:hidden md:py-2 md:px-3 px-3 py-2"}
         >
           <Menu openNavigation={openNavigation} />
@@ -79,6 +80,7 @@ const Header = () => {
           Sign Up
         </Button>
       </div>
+      <GotoTheTop/>
     </div>
   );
 };

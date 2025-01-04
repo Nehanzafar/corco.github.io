@@ -1,79 +1,30 @@
-import { useState, useEffect } from "react";
 import SearchBar from "../components/search";
 import { HeroParagraph, mobileHeroParagraph } from "../constants";
 import Button from "../components/Button";
-import RecipeDisplay from "../components/RecipeDisplay";
-import { searchRecipes } from "../api/recipes.js";
+import { searchPopularRecipes } from "../api/recipes.js";
 import { useLoaderData } from "react-router-dom";
 import PropTypes from "prop-types";
 import testData from "../constants/testData.json";
-
-
+import ResultArray from "../components/ResultArray.jsx";
 
 export async function loader() {
-  var rand = Math.floor(Math.random() * 19);
-  const recipesArray = [
-    "Spaghetti Carbonara",
-    "Chicken Tikka Masala",
-      "Beef Stroganoff",
-      "Vegetable Stir-Fry",
-      "Margherita Pizza",
-      "Caesar Salad",
-      "Fish Tacos",
-      "Shrimp Scampi",
-      "Ramen Noodles",
-      "Lentil Soup",
-      "Eggplant Parmesan",
-      "Classic Cheeseburger",
-      "Chicken Alfredo Pasta",
-      "Tomato Basil Soup",
-      "Vegetarian Chili",
-      "Sushi Rolls",
-      "Greek Salad",
-      "Chocolate Chip Cookies",
-    
-    ];
-  const recipes = await searchRecipes(recipesArray[rand], 15);
+  const recipes = await searchPopularRecipes(15);
 
-  return [recipes];
+  return recipes || [];
 }
-
-const Loader = () => (
-  <div className="flex justify-center items-center h-full">
-    <div className="loader"></div>
-  </div>
-);
-
-const ResultArray = ({ data }) => {
-  const recipes = data || [];
-
-  return (
-    <div className="flex flex-wrap md:flex-row flex-col md:justify-around items-center md:mx-3 mx-1 mb-3 -mt-2">
-      {recipes.map((recipe) => (
-        <RecipeDisplay
-        key={recipe?.id}
-          recipe={recipe}
-          onErrorImage={(e) =>
-            (e.target.parentElement.parentElement.style.display = "none")
-          }
-        />
-      ))}
-    </div>
-  );
-};
 
 // For later use
 // e.target.src =
-    // "https://placehold.co/270x200/FCFCFC/BCBCBC/png?text=Image+Not+Found&font=poppins"
+// "https://placehold.co/270x200/FCFCFC/BCBCBC/png?text=Image+Not+Found&font=poppins"
 
 const Home = () => {
   const recipes = useLoaderData() || [];
-
   return (
     <>
       <div
         role="Hero section"
-        className="bg-heroImg bg-cover md:h-[100vh] h-[60vh] lg:block flex flex-col items-center justify-start"
+        className="hero-section bg-heroImg items-center justify-start"
+        // style={{backgroundImage: `url(front-end\src\assets\imgs\Hero img.png)`}}
       >
         <div className="flex flex-col lg:items-start items-center justify-center lg:w-1/2 w-auto h-full lg:ml-16">
           <h1 className="font-dancingScript lg:text-mainHeading md:text-[6rem] text-[3rem] text-backgroundColors-1 my-1">
@@ -117,19 +68,29 @@ const Home = () => {
           <h1 className="font-dancingScript lg:text-mainHeading md:text-[6rem] text-[3rem] text-center mt-6 text-textColors-2">
             Popular Recipes
           </h1>
-              {recipes.length ?
-              <ResultArray data={recipes} /> : <ResultArray data={testData.results} />
+          {recipes.length ? (
+            <ResultArray
+              data={recipes}
+              onError={(e) =>
+                (e.target.parentElement.parentElement.style.display = "none")
               }
+            />
+          ) : (
+            <ResultArray
+              data={testData.results}
+              onError={(e) =>
+                (e.target.parentElement.parentElement.style.display = "none")
+              }
+            />
+          )}
         </div>
       </div>
     </>
   );
 };
 
-
-ResultArray.propTypes = { 
+ResultArray.propTypes = {
   data: PropTypes.array,
-
 };
 
 export default Home;

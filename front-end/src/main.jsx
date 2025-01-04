@@ -4,42 +4,45 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./errorElement";
 import Home from "./routes/Home";
 import "./index.css";
-import {loader as homeLoader} from "./routes/Home";
-import {loader as recipeLoader} from "./routes/RecipeCard";
+import { loader as homeLoader } from "./routes/Home";
+import { loader as recipeLoader } from "./routes/RecipeCard";
+import { loader as searchLoader } from "./routes/SearchPage";
 import Root from "./routes/Root";
 import ConstructionPage from "./routes/ConstructionPage";
 import RecipeCard from "./routes/RecipeCard";
+import SearchPage from "./routes/SearchPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>,
-    errorElement: <ErrorPage/>,
+    element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <Home/>,
+        element: <Home />,
         loader: homeLoader,
       },
       {
         path: "/meal-plans",
-        element: <ConstructionPage url={"Meal plans"}/>,
+        element: <ConstructionPage url={"Meal plans"} />,
       },
       {
         path: "/explore",
-        element: <ConstructionPage url={"Explore"}/>
+        element: <ConstructionPage url={"Explore"} />,
       },
       {
         path: "/contact",
-        element: <ConstructionPage url={"Contact"}/>
+        element: <ConstructionPage url={"Contact"} />,
       },
       {
         path: "/about",
-        element: <ConstructionPage url={"About"}/>
+        element: <ConstructionPage url={"About"} />,
       },
       {
         path: "/search",
-        element: <ConstructionPage url={"Search"} />
+        element: <SearchPage />,
+        loader: searchLoader,
       },
       {
         path: "/RecipeCard/:recipeId",
@@ -50,12 +53,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <ConstructionPage url="Signup" />
+    element: <ConstructionPage url="Signup" />,
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+  <RouterProvider router={router} />
 );
