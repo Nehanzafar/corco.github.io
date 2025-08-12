@@ -1,7 +1,7 @@
 import SearchBar from "../components/search";
 import { HeroParagraph, mobileHeroParagraph } from "../constants";
 import Button from "../components/Button";
-import { searchPopularRecipes } from "../api/recipes.js";
+import { searchPopularRecipes } from "../utils/recipes.js";
 import { useLoaderData } from "react-router-dom";
 import PropTypes from "prop-types";
 import testData from "../constants/testData.json";
@@ -39,7 +39,7 @@ const Home = () => {
           </p>
           <div className="lg:block flex justify-around lg:w-auto w-full lg:px-0 md:px-12 px-8">
             <Button
-              onClick={() => alert("Hello 1")}
+              onClick={() => alert("Under Devolpment")}
               color={
                 "bg-secondary-1 text-backgroundColors-2 hover:bg-secondary-2 hover:text-textColors-1"
               }
@@ -50,7 +50,7 @@ const Home = () => {
               Explore
             </Button>
             <Button
-              onClick={() => alert("Hello 2")}
+              onClick={() => alert("Under Devolpment")}
               color={
                 "bg-secondary-1 text-backgroundColors-2 hover:bg-secondary-2 lg:ml-6 hover:text-textColors-1"
               }

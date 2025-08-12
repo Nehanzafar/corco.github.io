@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
-import GotoTheTop from "../api/toTheTop";
+import GotoTheTop from "../utils/toTheTop";
 import logo from "../assets/imgs/SVGs/Logo.svg";
 import Menu from "../assets/imgs/SVGs/menu";
 import { nav } from "../constants/index";

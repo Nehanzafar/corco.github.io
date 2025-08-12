@@ -1,7 +1,8 @@
 import { useRef } from "react";
-import fetchRecipeById from "../api/recipes.js";
+import fetchRecipeById from "../utils/recipes.js";
 import { useLoaderData } from "react-router-dom";
 import localforage from "localforage";
+import ExpandableText from "../components/expandableTest.jsx";
 
 export async function loader({ params }) {
   const fromLocalStorage = await localforage.getItem(`${params.recipeId}`);
@@ -22,10 +23,12 @@ export async function loader({ params }) {
 const RecipeCard = () => {
   const { recipe } = useLoaderData();
 
-
   if (recipe.status === "failure" || recipe.code === 402) {
     throw new Error("Failed to fetch data!");
   }
+
+  const parser = new DOMParser();
+  const HtmlDoc = parser.parseFromString(recipe.summary, "text/html").body;
 
   return (
     <div>
@@ -37,11 +40,7 @@ const RecipeCard = () => {
           <h1 className="font-roboto lg:text-[3rem] md:text-[2.5rem] text-[2rem] text-backgroundColors-1 backdrop-blur-lg rounded-xl p-4">
             {recipe.title}
           </h1>
-          {/* <p
-            id="summary"
-            className="bg-backgroundColors-1/80 p-1 rounded-md"
-            onLoad={onLoaded}
-          ></p> */}
+          <ExpandableText id="summary" text={HtmlDoc.textContent} className='w-[60vw]'/>
         </div>
       </div>
       <div>

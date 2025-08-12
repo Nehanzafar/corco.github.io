@@ -1,8 +1,8 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ResultArray from "../components/ResultArray.jsx";
-import Search from "../components/Search.jsx";
-import { searchRecipes } from "../api/recipes.js";
+import Search from "../components/search.jsx";
+import { searchRecipes } from "../utils/recipes.js";
 
 export async function loader({ request }) {
   const url = new URL(request.url);

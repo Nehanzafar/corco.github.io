@@ -1,0 +1,15 @@
+Unit testing: Verifying individual components or functions ✔
+
+Integration testing: Checking interactions between different parts of the app
+
+Functional testing: Ensuring the app meets specified requirements
+
+UI/UX testing: Evaluating the user interface and experience
+
+Performance testing: Assessing app speed, responsiveness, and stability
+
+Security testing: Identifying vulnerabilities and ensuring data protection
+
+Accessibility testing: Verifying usability for people with disabilities
+
+Compatibility testing: Checking functionality across different devices and platforms
