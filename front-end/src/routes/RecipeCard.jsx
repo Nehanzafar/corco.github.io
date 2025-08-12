@@ -1,8 +1,9 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import fetchRecipeById from "../utils/recipes.js";
 import { useLoaderData } from "react-router-dom";
 import localforage from "localforage";
 import ExpandableText from "../components/expandableTest.jsx";
+import useRouteAsTitle from "../utils/hooks/useRouteAsTitle.jsx";
 
 export async function loader({ params }) {
   const fromLocalStorage = await localforage.getItem(`${params.recipeId}`);
@@ -24,23 +25,31 @@ const RecipeCard = () => {
   const { recipe } = useLoaderData();
 
   if (recipe.status === "failure" || recipe.code === 402) {
+    console.log(recipe)
     throw new Error("Failed to fetch data!");
   }
 
+  const myRef = useRef(null);
   const parser = new DOMParser();
   const HtmlDoc = parser.parseFromString(recipe.summary, "text/html").body;
 
+  useRouteAsTitle(recipe.title)
+  useEffect(() => {
+    myRef.current.appendChild(HtmlDoc);
+
+  }, [HtmlDoc])
   return (
     <div>
       <div
         className="hero-section flex lg:flex-row items-center lg:justify-start flex-col justify-center border border-1 border-gray  "
         style={{ backgroundImage: `url(${recipe.image})` }}
       >
-        <div className="mx-16">
-          <h1 className="font-roboto lg:text-[3rem] md:text-[2.5rem] text-[2rem] text-backgroundColors-1 backdrop-blur-lg rounded-xl p-4">
+        <div className="mx-16 w-[80vw]">
+          <h1 className="font-roboto lg:text-[3.5rem] md:text-[3rem] text-[2.2rem] text-backgroundColors-1 backdrop-blur-lg rounded-xl p-4">
             {recipe.title}
           </h1>
-          <ExpandableText id="summary" text={HtmlDoc.textContent} className='w-[60vw]'/>
+          {/* <ExpandableText id="summary" className="p-2" ref={}/> */}
+          <p ref={myRef}></p>
         </div>
       </div>
       <div>
@@ -49,7 +58,7 @@ const RecipeCard = () => {
             <h1 className="text-[1.75rem] inline-block font-roboto bg-secondary-1 text-textColors-1 rounded-2xl px-3 py-2 mt-5">
               Ingredients:
             </h1>
-            <ul className="my-4 mx-5">
+            <ul className="my-4 mx-5 md:w-[70vw] w-[90vw] md:mx-4">
               {recipe.extendedIngredients &&
                 recipe?.extendedIngredients.map((ingredient) => (
                   <li
